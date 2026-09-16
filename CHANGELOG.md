@@ -1,5 +1,9 @@
 # Histórico de Versões - WA Chat Reader
 
+## [4.0.1] - 2026-09
+- Código otimizado para rodar mais rápido.
+- Possibilidade de gerar um arquivo .html com as mídias integradas de forma leve, tornando sua leitura portátil.
+
 ## [4.0] - 2026-05
 - Nova interface gráfica utilizando **CustomTkinter**.
 - Suporte para visualização direta de mídias (fotos, vídeos e áudios) no HTML.
