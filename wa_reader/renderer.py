@@ -30,7 +30,15 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:
 <body><div class="chat">
 '''
 
-TEMPLATE_END = '''</div></body></html>'''
+TEMPLATE_END = '''<script>
+// Busca simples
+const busca = document.createElement('input'); busca.type='text'; busca.placeholder='Buscar...'; busca.style='position:fixed;top:10px;right:10px;padding:6px;border-radius:4px;border:none;'; document.body.appendChild(busca); busca.addEventListener('input', e => { const v=e.target.value.toLowerCase(); document.querySelectorAll('.chat .msg').forEach(m=>{ m.style.display = m.innerText.toLowerCase().includes(v)?'' : 'none'; }); });
+// Tema
+let tema = localStorage.getItem('tema') || 'dark';
+document.documentElement.style.setProperty('--bg', tema==='dark'?'#0b141a':'#f0f2f5');
+document.documentElement.style.setProperty('--text', tema==='dark'?'#e9edef':'#111');
+document.documentElement.style.setProperty('--card', tema==='dark'?'#202c33':'#ffffff');
+</script></div></body></html>'''
 
 # Cores fixas por ordem de aparição
 PALETTE = ["#53bdeb", "#e15759", "#59c7b0", "#f2c57c", "#b97cff", "#5cb3ff", "#ff8f7e", "#a0e88f", "#ffb86c", "#8be9fd"]
