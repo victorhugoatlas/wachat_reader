@@ -112,7 +112,7 @@ def parse_chat_file(path: str):
                 day, month = _disambiguate(d, mo)
                 dt = _parse_date(day, month, y)
                 h = int(m.group(4)); mi = int(m.group(5))
-                is_pm = m.group(6).upper() == 'P'
+                is_pm = (m.group(6) or '').upper() == 'P'
                 if is_pm and h < 12: h += 12
                 dt = dt.replace(hour=h, minute=mi)
             else:
