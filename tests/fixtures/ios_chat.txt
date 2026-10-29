@@ -1,0 +1,9 @@
+[12/03/2024, 14:35:22] Maria Silva: Ola! <anexado: IMG_20240312.jpg> Que foto boa!
+[12/03/2024, 14:36:10] João Pedro: Tudo bem?
+[12/03/2024, 14:36:45] As mensagens e ligações são protegidas com a criptografia end-to-end.
+[12/03/2024, 14:37:22] Maria Silva: <Mídia oculta>
+[12/03/2024, 14:38:05] Maria Silva: Esta mensagem foi apagada
+[12/03/2024, 14:39:22] João Pedro: Texto editado <Mensagem editada> final
+[12/03/2024, 14:40:00] João Pedro: linha um
+linha dois
+linha três
