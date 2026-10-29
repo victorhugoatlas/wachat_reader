@@ -23,8 +23,6 @@ pytest
 - Android 2 dígitos: `12/03/24 14:35 - Nome: texto`
 - Separadores de data: `/`, `.`, `-`
 
-Se encontrar formato real não reconhecido, adicione como fixture em `tests/fixtures/` e atualize `parser.py`.
-
 ## Funcionalidades
 
 - Dois modos: Rápido (links relativos) e Portátil (Base64 em lotes)
