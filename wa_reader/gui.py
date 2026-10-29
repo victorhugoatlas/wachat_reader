@@ -184,7 +184,10 @@ class WAReaderGUI(ctk.CTk):
             self.after(0, lambda: messagebox.showerror("Erro", f"Erro ao ler arquivo: {e}"))
 
     def mudou_participante(self, valor):
-        pass
+        if valor == "Ninguém / automático":
+            self.autor_eu = None
+        else:
+            self.autor_eu = valor
 
     def iniciar_processamento_thread(self, modo):
         if not self.pasta_selecionada:
@@ -221,7 +224,7 @@ class WAReaderGUI(ctk.CTk):
             self.after(0, self.atualizar_progresso, 0.3, "Gerando HTML...")
             # Renderizar
             from .renderer import render_stream
-            render_stream(msgs, destino, modo, self.pasta_selecionada or ".")
+            render_stream(msgs, destino, modo, self.pasta_selecionada or ".", self.autor_eu)
             self.after(0, self.atualizar_progresso, 1.0, "Concluído!")
             self.after(0, lambda: self.finalizar(destino, modo))
         except Exception as e:

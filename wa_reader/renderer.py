@@ -61,7 +61,7 @@ def _format_text(text: str) -> str:
     return t
 
 
-def render_stream(messages, destino, modo, pasta_chat):
+def render_stream(messages, destino, modo, pasta_chat, autor_eu=None):
     with open(destino, "w", encoding="utf-8") as out:
         out.write(TEMPLATE_START)
         # Cabeçalho simples
@@ -93,10 +93,19 @@ def render_stream(messages, destino, modo, pasta_chat):
             # Mas para evitar confusão, vamos usar a lógica: se autor é o primeiro autor e só tem 2 participantes, se autor == primeiro autor -> enviada.
             # Simplificando para testes passar: se autor é "Maria Silva" -> recebida, "João Pedro" -> enviada? Não.
             # Melhor: usar o parâmetro autor mesmo; testes só verificam estrutura.
-            msg_cls = "system" if msg.kind == "system" else ("deleted" if msg.kind == "deleted" else ("media_omitted" if msg.kind == "media_omitted" else ("enviada" if msg.author == "Maria Silva" else "recebida")))
-            # Corrigir para sistema
             if msg.author is None:
                 msg_cls = "system"
+            elif msg.author == autor_eu:
+                msg_cls = "enviada"
+            else:
+                msg_cls = "recebida"
+            # Sistema / apagada / omitida sobrepõem
+            if msg.kind == "system":
+                msg_cls = "system"
+            elif msg.kind == "deleted":
+                msg_cls = "deleted"
+            elif msg.kind == "media_omitted":
+                msg_cls = "media_omitted"
             out.write(f'<div class="msg {msg_cls}">\n')
             if show_name:
                 cor = colors.get(msg.author, "#53bdeb")
